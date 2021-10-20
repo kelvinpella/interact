@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import HeaderLogo from "./HeaderLogo";
 import Button from "./Button";
@@ -14,7 +13,7 @@ const {
 const RegisterForm = (props) => {
   const CancelToken = axios.CancelToken;
   const cancelTokenRef = useRef();
-  const history = useHistory();
+  const history = props.history;
   const [username, setUsername] = useState("");
   const [gender, setGender] = useState("female");
   const [error, setError] = useState(true);
@@ -85,10 +84,6 @@ const RegisterForm = (props) => {
     if (error) return false;
     return true;
   };
-  const handleInstagramProfile = () => {
-    const url = props.history.location.pathname;
-    props.history.push(url + `/profile/${profileInfo.username}`);
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -108,27 +103,24 @@ const RegisterForm = (props) => {
         cancelToken: cancelTokenRef.current.token,
       })
         .then((response) => {
-          setLoading(false);
-          getDataBlob(response.data);
+          const data = response.data;
+          getDataBlob(data);
+          const url = history.location.pathname;
+          history.push(url + `/profile/${data.username}`);
         })
         .catch(function (error) {
           if (axios.isCancel(error)) {
             setLoading(false);
           } else {
             setLoading(false);
-            console.log(error);
           }
         });
-      Object.keys(profileInfo).length > 0 && handleInstagramProfile();
       return;
     }
     // show errors
     invalidInputField();
   };
 
-  useEffect(() => {
-    // usernameRef.current.focus();
-  }, []);
   let renderedContent = (
     <div className="w-full">
       <HeaderLogo />
