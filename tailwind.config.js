@@ -11,38 +11,21 @@ module.exports = {
         greyish: "#707070",
         33: "#333333",
         fc: "#fcfafa",
+        "2e": "#2e2d2d",
+        f8: "#f8f7f7",
       },
       fontSize: {
         // 85: "5.313rem",
-        // 65: "4.063rem",
-        // 10: "0.625rem",
-        // 17: "1.063rem",
-        // 18: "1.125rem",
-        // 14: "0.875rem",
-        // 12: "0.75rem",
-        // 13: "0.813rem",
-        // 31: "1.938rem",
-        // 45: "2.813rem",
       },
       lineHeight: {
         // 75: "4.688rem",
-        // 63: "3.938rem",
-        // 14: "0.875rem",
-        // 18: "1.125rem",
-        // 23: "1.438rem",
-        // 22: "1.375rem",
-        // 25: "1.563rem",
-        // 27: "1.688rem",
-        // 35: "2.188rem",
       },
       letterSpacing: {
         // 0.1: "0.1em",
-        // 0.3: "0.3em",
-        // 0.4: "0.4em",
-        // 0.017: "0.001rem",
       },
       borderColor: {
         greyish: "#707070",
+        borderHover: "#484f4f",
       },
       backgroundColor: {
         greyish: "#f2f2f266",
@@ -50,27 +33,18 @@ module.exports = {
         d8: "#d8d5d5",
         de: "#de354c",
         f8: "#f83650",
+        70: "#707070",
+        81: "#818181",
       },
-      backgroundImage: {
-        // "about-cover":
-        //   "linear-gradient(#000000, rgba(0, 0, 0, 0)), url('/src/assets/About/cover.png')",
-        // "sale-cover":
-        //   "linear-gradient(rgba(26, 26, 36, 0.9), rgba(26, 26, 36, 0.9)), url('/src/assets/SaleDate/salecover.svg')",
+      backgroundImage: {},
+      width: {
+        em: "1em",
       },
-      maxHeight: {
-        // 28: "28.9rem",
+      height: {
+        em: "1em",
       },
-      minWidth: {
-        // 90: "90%",
-      },
-      top: {
-        // 45: "45%",
-      },
-      left: {
-        // 8: "8%",
-      },
-      right: {
-        // 10: "10%",
+      borderRadius: {
+        circle: "50%",
       },
     },
   },

@@ -20,13 +20,15 @@ const LandingPage = (props) => {
         <img src={InteractText} alt="interactText" className="w-full " />
       </div>
       <input
-        className="w-11/12 text-xl  text-greyish py-5 px-2.5 bg-whitish  border border-solid border-greyish rounded-md hover:bg-d8 hover:text-33 "
+        className="w-11/12   text-greyish py-5 px-2.5 bg-whitish  border border-solid border-greyish rounded-md hover:bg-d8 hover:text-33 "
         type="button"
         value="Add your instagram username"
         onClick={toUsernameForm}
       ></input>
-      <p className=" mt-1 text-greyish">Username will be listed for chat</p>
-      <p className=" text-xl my-4">OR</p>
+      <p className="text-sm mt-1 text-greyish">
+        Username will be listed for chat
+      </p>
+      <p className="  my-4">OR</p>
       <Button value="Chat with girls" />
       <Button value="Chat with boys" />
     </div>

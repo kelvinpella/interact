@@ -1,11 +1,21 @@
 import React from "react";
 
-const Button = ({ value }) => {
+const Button = ({ value, classValues, buttonType, cancel }) => {
+  const clickHandler = () => {
+    if (cancel) {
+      cancel();
+    }
+  };
   return (
     <input
-      className="w-3/4 text-2xl text-fc py-2.5 px-5 mb-5 bg-de border border-solid border-greyish rounded-md hover:bg-f8"
-      type="button"
+      className={
+        classValues
+          ? classValues
+          : "w-3/4 text-2xl text-fc py-2.5 px-5 mb-5 bg-de border border-solid border-greyish rounded-md hover:bg-f8"
+      }
+      type={buttonType ? buttonType : "button"}
       value={value}
+      onClick={clickHandler}
     ></input>
   );
 };
