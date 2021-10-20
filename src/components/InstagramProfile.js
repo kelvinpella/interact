@@ -2,21 +2,39 @@ import React from "react";
 import Button from "./Button";
 import HeaderLogo from "./HeaderLogo";
 
-const InstagramProfile = (props) => {
+const InstagramProfile = ({ profileInfo }) => {
+  // toggle render between profile info and errors
+  let renderedContent;
+
+  if (profileInfo) {
+    const { username, fullName, profilePic } = profileInfo;
+    renderedContent = (
+      <>
+        <figure className="w-2/5 my-12 mx-auto">
+          <img src={profilePic} alt="myphoto" className="w-full" />
+          <figcaption className="max-w-full overflow-auto text-base mt-2.5">
+            {username}
+          </figcaption>
+        </figure>
+        <h1 className="text-2xl m-6 font-bold max-w-full overflow-auto">
+          Welcome, {fullName}
+        </h1>
+      </>
+    );
+  } else {
+    renderedContent = (
+      <p className="text-xl my-12 font-bold max-w-full overflow-auto">
+        Ooops! Failed to fetch profile.
+        <br /> Try again later.
+      </p>
+    );
+  }
   // get profile Information via props
-  const { username, fullName, profilePic } = props.profileInfo;
+
   return (
     <div className="w-full text-center">
       <HeaderLogo />
-      <figure className="w-2/5 my-12 mx-auto">
-        <img src={profilePic} alt="myphoto" className="w-full" />
-        <figcaption className="max-w-full overflow-auto text-base mt-2.5">
-          {username}
-        </figcaption>
-      </figure>
-      <h1 className="text-2xl m-6 font-bold max-w-full overflow-auto">
-        Welcome, {fullName}
-      </h1>
+      {renderedContent}
       <div>
         <Button value="Continue to chat" />
         <Button

@@ -19,6 +19,7 @@ const RegisterForm = (props) => {
   const [error, setError] = useState(true);
   const [loading, setLoading] = useState(false);
   const [profileInfo, setProfileInfo] = useState({});
+  const [profileFail, setProfileFail] = useState(false);
   const usernameRef = useRef();
   const usernameNoteRef = useRef();
 
@@ -113,6 +114,7 @@ const RegisterForm = (props) => {
             setLoading(false);
           } else {
             setLoading(false);
+            setProfileFail(true);
           }
         });
       return;
@@ -211,7 +213,6 @@ const RegisterForm = (props) => {
   if (loading) {
     renderedContent = (
       <div>
-        <HeaderLogo />
         <InstagramCheck
           cancelOperation={() => {
             cancelTokenRef.current.cancel();
@@ -220,9 +221,14 @@ const RegisterForm = (props) => {
       </div>
     );
   }
+
   // show profile info when available
   if (Object.keys(profileInfo).length > 0) {
     renderedContent = <InstagramProfile profileInfo={profileInfo} />;
+  }
+  // show error when fails to retrieve profile info
+  if (!loading && profileFail) {
+    renderedContent = <InstagramProfile />;
   }
   return renderedContent;
 };
