@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router";
 import Button from "./Button";
 import HeaderLogo from "./HeaderLogo";
 
 const InstagramProfile = ({ profileInfo }) => {
+  const history = useHistory();
   // toggle render between profile info and errors
   let renderedContent;
 
@@ -25,7 +27,9 @@ const InstagramProfile = ({ profileInfo }) => {
     renderedContent = (
       <p className="text-xl my-12 font-bold max-w-full overflow-auto">
         Ooops! Failed to fetch profile.
-        <br /> Try again later.
+        <br /> Check Username <br />
+        and <br />
+        Try again.
       </p>
     );
   }
@@ -38,6 +42,7 @@ const InstagramProfile = ({ profileInfo }) => {
       <div>
         <Button value="Continue to chat" />
         <Button
+          cancel={() => history.push("/")}
           value="Change username"
           classValues="bg-70 border border-solid border-greyish text-white px-5 py-2 rounded-md mt-5 mb-2.5 hover:bg-81 hover:text-f8 "
         />
