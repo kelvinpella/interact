@@ -1,12 +1,23 @@
 import React from "react";
 
-const Button = ({ value, classValues, buttonType, cancel, continueToChat }) => {
+const Button = ({
+  value,
+  classValues,
+  buttonType,
+  cancel,
+  goToChat,
+  continueToChat,
+}) => {
   const clickHandler = () => {
     if (cancel) {
       cancel();
     }
+    if (goToChat) {
+      goToChat();
+    }
     if (continueToChat) {
-      continueToChat();
+      // value = 'chat with' girls/boys
+      continueToChat(value);
     }
   };
   return (

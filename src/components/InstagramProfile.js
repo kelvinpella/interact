@@ -20,12 +20,11 @@ const InstagramProfile = ({ profileInfo }) => {
   const history = useHistory();
   const [toChat, setToChat] = useState(false);
   let renderedContent, renderedButtons;
-  // store downloaded image url from firebase
-  const [firebaseImageUrl, setFirebaseImageUrl] = useState("");
   // toggle render between profile info and errors
 
   const uploadImageHandler = async () => {
     const { username, profilePic } = profileInfo;
+    let imageDownloadUrl;
     // Create a storage reference from our storage service
     // this is the image reference
     const storageRef = ref(storage, username);
@@ -34,16 +33,18 @@ const InstagramProfile = ({ profileInfo }) => {
     try {
       await uploadString(storageRef, profilePic, "data_url");
       // retrieve url and set in state
-      setFirebaseImageUrl(await getDownloadURL(storageRef));
+      imageDownloadUrl = await getDownloadURL(storageRef);
     } catch (error) {
-      //TODO
-      console.log("Failed to upload image");
+      //todo
+      imageDownloadUrl = null;
     }
+    return imageDownloadUrl;
   };
 
   const uploadDataHandler = async () => {
     // upload image first and retrieve it's url
-    await uploadImageHandler();
+    const imageDownloadUrl = await uploadImageHandler();
+    console.log(imageDownloadUrl);
     const { username, name, gender } = profileInfo;
     // save profile info to database
     try {
@@ -53,24 +54,26 @@ const InstagramProfile = ({ profileInfo }) => {
         username,
         name,
         gender,
-        photo: firebaseImageUrl,
+        photo: imageDownloadUrl,
       });
     } catch (error) {
+      //todo
       console.log(error);
     }
   };
-  const continueToChat = async () => {
-    setToChat(true);
+  const continueToChatHandler = async (value) => {
     // save profile information to firebase if available.
     if (profileInfo) {
       await uploadDataHandler();
     }
+    //go to girls/boys list
+    history.push(`/users/${value === "Chat with girls" ? "female" : "male"}`);
   };
   //toggle chat options for chat
   if (!toChat) {
     renderedButtons = (
       <div>
-        <Button continueToChat={continueToChat} value="Continue to chat" />
+        <Button goToChat={() => setToChat(true)} value="Continue to chat" />
         <Button
           cancel={() => history.push("/")}
           value="Change username"
@@ -80,14 +83,20 @@ const InstagramProfile = ({ profileInfo }) => {
     );
   } else {
     renderedButtons = (
-      <div className="">
+      <div onClick={() => setToChat(false)}>
         <div className="z-20 relative">
-          <Button value="Chat with girls" />
+          <Button
+            continueToChat={(value) => continueToChatHandler(value)}
+            value="Chat with girls"
+          />
         </div>
         <div className="z-20 relative">
-          <Button value="Chat with boys" />
+          <Button
+            continueToChat={(value) => continueToChatHandler(value)}
+            value="Chat with boys"
+          />
         </div>
-        <div className="bg-white opacity-80 absolute top-0 left-0 w-screen h-screen "></div>
+        <div className="bg-black opacity-50 absolute top-0 left-0 w-screen h-screen "></div>
       </div>
     );
   }
