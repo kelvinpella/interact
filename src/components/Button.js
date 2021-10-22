@@ -1,9 +1,12 @@
 import React from "react";
 
-const Button = ({ value, classValues, buttonType, cancel }) => {
+const Button = ({ value, classValues, buttonType, cancel, continueToChat }) => {
   const clickHandler = () => {
     if (cancel) {
       cancel();
+    }
+    if (continueToChat) {
+      continueToChat();
     }
   };
   return (

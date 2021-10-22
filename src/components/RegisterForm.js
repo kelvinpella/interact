@@ -40,8 +40,9 @@ const RegisterForm = (props) => {
     var profilePic = await parseURI(blob);
     setProfileInfo({
       username: data.username,
-      fullName: data.full_name.match(/\S+/)[0],
+      name: data.full_name.match(/\S+/)[0],
       profilePic,
+      gender,
     });
     return;
   }
