@@ -59,34 +59,34 @@ class UsersList extends Component {
       renderedContent = (
         <div className="w-full animate-pulse px-1.5 py-6  grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
           <div className="m-auto">
-            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
           </div>
           <div className="m-auto">
-            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
           </div>
           <div className="m-auto">
-            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
           </div>
           <div className="m-auto">
-            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
           </div>
           <div className="m-auto">
-            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
           </div>
           <div className="m-auto">
-            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
-            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
           </div>
         </div>
       );
