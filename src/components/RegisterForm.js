@@ -107,8 +107,7 @@ const RegisterForm = (props) => {
         .then((response) => {
           const data = response.data;
           getDataBlob(data);
-          const url = history.location.pathname;
-          history.push(url + `/profile/${data.username}`);
+          // history.push(`/profile/${data.username}`);
         })
         .catch(function (error) {
           if (axios.isCancel(error)) {

@@ -8,6 +8,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 import HeaderLogo from "./HeaderLogo";
+import Spinner from "./Spinner/Spinner";
 
 // create a firestore database reference
 const db = getFirestore(firebaseApp);
@@ -19,13 +20,15 @@ class UsersList extends Component {
   state = {
     users: [],
     loading: false,
+    showNote: true,
+    loader: 1,
   };
   loadUsers = async () => {
     let usersArr = [];
     this.setState({ loading: true });
     //get gender from url params
     const gender = this.props.match.params.id;
-    console.log(gender);
+
     // Create a query against the collection.
     const q = query(usersRef, where("gender", "==", gender));
     const querySnapshot = await getDocs(q);
@@ -44,35 +47,67 @@ class UsersList extends Component {
   componentDidMount() {
     this.loadUsers();
   }
+  copyUsernameHandler = async (username) => {
+    await navigator.clipboard.writeText(username);
+    window.open(`https://www.instagram.com/${username}`);
+  };
+
   render() {
-    const { users, loading } = this.state;
+    let { users, loading, loader } = this.state;
+    let usersSlice = users.slice(0, loader * 9);
     let renderedContent;
     if (loading) {
-      renderedContent = <div>Loading!</div>;
+      renderedContent = <Spinner />;
     }
     if (!loading && users.length === 0) {
-      renderedContent = <div>No users found!</div>;
+      renderedContent = (
+        <div className="w-11/12 mt-2 mx-auto text-black">No users found!</div>
+      );
     }
     if (!loading && users.length > 0) {
       renderedContent = (
-        <div className="w-full px-1.5 py-6 text-sm grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
-          {users.map((user) => (
-            <div key={user.username}>
-              <div>
-                <img
-                  src={user.photo}
-                  alt={user.username}
-                  className="rounded-full"
-                />
-              </div>
-              <h2 className="w-full my-1.5 overflow-ellipsis overflow-hidden  text-black">
-                {user.username}
-              </h2>
-              <button className="text-base text-fc rounded-full py-1.5 px-6  bg-de border border-solid border-greyish hover:bg-f8">
-                Chat
-              </button>
+        <div className="text-center">
+          {this.state.showNote && (
+            <div className="w-11/12 mt-2 mx-auto text-black text-xs bg-blue-100  ">
+              Click 'Chat' to copy username and visit profile.{" "}
+              <span
+                onClick={() => this.setState({ showNote: false })}
+                className="float-right  text-red-600 mr-1.5"
+              >
+                Close
+              </span>
             </div>
-          ))}
+          )}
+          <div className="w-full px-1.5 py-6 text-sm grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
+            {usersSlice.map((user) => (
+              <div key={user.username}>
+                <div>
+                  <img
+                    src={user.photo}
+                    alt={user.username}
+                    className="rounded-full"
+                  />
+                </div>
+                <h2 className="w-full my-1.5 overflow-ellipsis overflow-hidden  text-black">
+                  {user.username}
+                </h2>
+                <button
+                  onClick={() => this.copyUsernameHandler(user.username)}
+                  className="text-base text-fc rounded-full py-1.5 px-6  bg-de border border-solid border-greyish hover:bg-f8"
+                >
+                  Chat
+                </button>
+              </div>
+            ))}
+          </div>
+          {!loading && users.length > usersSlice.length && (
+            <input
+              className=" mx-auto mb-2 text-sm py-1 px-2 text-greyish  bg-whitish  border border-solid border-greyish rounded-md hover:bg-d8 hover:text-33 "
+              type="button"
+              value="Load more"
+              onClick={() => this.setState({ loader: (loader += 1) })}
+            ></input>
+          )}
         </div>
       );
     }
