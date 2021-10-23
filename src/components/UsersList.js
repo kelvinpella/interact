@@ -8,7 +8,6 @@ import {
   getDocs,
 } from "firebase/firestore";
 import HeaderLogo from "./HeaderLogo";
-import Spinner from "./Spinner/Spinner";
 
 // create a firestore database reference
 const db = getFirestore(firebaseApp);
@@ -57,7 +56,40 @@ class UsersList extends Component {
     let usersSlice = users.slice(0, loader * 9);
     let renderedContent;
     if (loading) {
-      renderedContent = <Spinner />;
+      renderedContent = (
+        <div className="w-full animate-pulse px-1.5 py-6  grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
+          <div className="m-auto">
+            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+          </div>
+          <div className="m-auto">
+            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+          </div>
+          <div className="m-auto">
+            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+          </div>
+          <div className="m-auto">
+            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+          </div>
+          <div className="m-auto">
+            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+          </div>
+          <div className="m-auto">
+            <div class="rounded-full  bg-gray-200 h-12 w-12"></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+            <div class="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
+          </div>
+        </div>
+      );
     }
     if (!loading && users.length === 0) {
       renderedContent = (

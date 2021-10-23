@@ -35,12 +35,14 @@ const RegisterForm = (props) => {
   }
 
   async function getDataBlob(data) {
-    var res = await fetch(data.profile_pic_url_hd);
+    const { username, full_name, profile_pic_url_hd } = data;
+    var res = await fetch(profile_pic_url_hd);
     var blob = await res.blob();
     var profilePic = await parseURI(blob);
+
     setProfileInfo({
-      username: data.username,
-      name: data.full_name.match(/\S+/)[0],
+      username,
+      name: full_name ? full_name.match(/\S+/)[0] : "",
       profilePic,
       gender,
     });
@@ -107,7 +109,6 @@ const RegisterForm = (props) => {
         .then((response) => {
           const data = response.data;
           getDataBlob(data);
-          // history.push(`/profile/${data.username}`);
         })
         .catch(function (error) {
           if (axios.isCancel(error)) {

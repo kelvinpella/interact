@@ -35,7 +35,6 @@ const InstagramProfile = ({ profileInfo }) => {
       // retrieve url and set in state
       imageDownloadUrl = await getDownloadURL(storageRef);
     } catch (error) {
-      //todo
       imageDownloadUrl = null;
     }
     return imageDownloadUrl;
@@ -44,7 +43,6 @@ const InstagramProfile = ({ profileInfo }) => {
   const uploadDataHandler = async () => {
     // upload image first and retrieve it's url
     const imageDownloadUrl = await uploadImageHandler();
-    console.log(imageDownloadUrl);
     const { username, name, gender } = profileInfo;
     // save profile info to database
     try {
@@ -57,17 +55,16 @@ const InstagramProfile = ({ profileInfo }) => {
         photo: imageDownloadUrl,
       });
     } catch (error) {
-      //todo
-      console.log(error);
+      return;
     }
   };
   const continueToChatHandler = async (value) => {
+    //go to girls/boys list
+    history.push(`/users/${value === "Chat with girls" ? "female" : "male"}`);
     // save profile information to firebase if available.
     if (profileInfo) {
       await uploadDataHandler();
     }
-    //go to girls/boys list
-    history.push(`/users/${value === "Chat with girls" ? "female" : "male"}`);
   };
   //toggle chat options for chat
   if (!toChat) {
