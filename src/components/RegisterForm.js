@@ -125,12 +125,12 @@ const RegisterForm = (props) => {
   };
 
   let renderedContent = (
-    <div className="w-full">
+    <div className="w-full ">
       <HeaderLogo />
-      <div className="w-10/12 text-xl text-black mx-auto mt-14">
+      <div className="w-10/12 text-xl md:text-3xl text-black mx-auto mt-14 md:max-w-screen-sm ">
         <form className=" w-full " onSubmit={handleSubmit}>
           <div className=" w-full  ">
-            <div className=" inline-block w-3/4 align-top">
+            <div className=" inline-block w-3/4 align-top md:pl-7">
               <label htmlFor="username" className="w-full mt-2.5 ">
                 Instagram username
               </label>
@@ -146,19 +146,19 @@ const RegisterForm = (props) => {
                 value={username}
               ></input>
             </div>
-            <span className=" inline-block align-top italic text-greyish text-base ">
+            <span className="md:text-2xl inline-block align-top italic text-greyish text-base ">
               (Required)
             </span>
           </div>
-          <p ref={usernameNoteRef} className="text-sm mt-1 text-greyish ">
+          <p ref={usernameNoteRef} className="text-sm md:text-base mt-1 md:pl-7 text-greyish ">
             Begin without '@' symbol
           </p>
-          <div className="mt-4">
+          <div className="mt-4 md:pl-7">
             <div className=" inline-block w-3/4 align-top">
               <label className="mt-2.5 ">Gender</label>
               <div className="ml-6 ">
                 <div className=" inline-block  align-top ml-4">
-                  <label className="mt-1 text-lg" htmlFor="male">
+                  <label className="mt-1 text-lg md:text-xl" htmlFor="male">
                     <input
                       className=" mr-2 "
                       id="male"
@@ -171,7 +171,7 @@ const RegisterForm = (props) => {
                   </label>
                 </div>
                 <div className=" inline-block  align-top ml-4">
-                  <label className=" mt-1 text-lg " htmlFor="female">
+                  <label className=" mt-1 text-lg md:text-xl" htmlFor="female">
                     <input
                       className=" mr-2"
                       id="female"
@@ -186,11 +186,11 @@ const RegisterForm = (props) => {
                 </div>
               </div>
             </div>
-            <span className="inline-block align-top italic text-greyish text-base ">
+            <span className="md:text-2xl inline-block align-top italic text-greyish text-base ">
               (Required)
             </span>
           </div>
-          <div className="w-full flex items-center justify-between ">
+          <div className="w-full flex items-center justify-between md:justify-center ">
             <div>
               <Button
                 cancel={() => history.goBack()}
@@ -202,7 +202,7 @@ const RegisterForm = (props) => {
               <Button
                 value="Submit"
                 buttonType="submit"
-                classValues="bg-de border border-solid border-greyish text-white px-5 py-2 rounded-md mt-5 mb-2.5  hover:bg-f8"
+                classValues="bg-de border border-solid border-greyish text-white px-5 py-2 rounded-md mt-5 mb-2.5  hover:bg-f8 md:ml-7"
               />
             </div>
           </div>

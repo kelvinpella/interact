@@ -45,9 +45,11 @@ module.exports = {
       },
       gridTemplateColumns: {
         2: "repeat(2, auto)",
+        4: "repeat(4, auto)",
       },
       gridTemplateRows: {
         5: "repeat(5, auto)",
+        4: "repeat(4, auto)",
       },
       borderRadius: {
         circle: "50%",
