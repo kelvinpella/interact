@@ -13,8 +13,10 @@ function App() {
           <Route path="/users/:id" component={UsersList} />
           <Route path="/register" component={RegisterForm} />
         </Switch>
-        <footer className=" w-full p-2.5 text-greyish text-center  text-xs bg-greyish  ">
-          <p>&copy; {new Date().getFullYear()} Interact from Interphase</p>
+        <footer className=" w-full p-2.5 text-greyish text-center  text-xs bg-greyish  md:text-xl">
+          <p className=" md:mb-7">
+            &copy; {new Date().getFullYear()} Interact from Interphase
+          </p>
         </footer>
       </div>
     </Router>
