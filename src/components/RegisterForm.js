@@ -36,7 +36,9 @@ const RegisterForm = (props) => {
 
   async function getDataBlob(data) {
     const { username, full_name, profile_pic_url_hd } = data;
-    var res = await fetch(profile_pic_url_hd);
+    var res = await fetch(
+      ` https://shielded-inlet-69398.herokuapp.com/${profile_pic_url_hd}`
+    );
     var blob = await res.blob();
     var profilePic = await parseURI(blob);
 
@@ -128,10 +130,10 @@ const RegisterForm = (props) => {
   let renderedContent = (
     <div className="w-full ">
       <HeaderLogo />
-      <div className="w-10/12 text-xl md:text-3xl text-black mx-auto mt-14 md:max-w-screen-sm ">
+      <div className="w-11/12 text-xl md:text-3xl text-black mx-auto mt-14 md:max-w-screen-sm ">
         <form className=" w-full " onSubmit={handleSubmit}>
           <div className=" w-full  ">
-            <div className=" inline-block w-3/4 align-top md:pl-7">
+            <div className=" inline-block w-4/5 align-top md:pl-7">
               <label htmlFor="username" className="w-full mt-2.5 ">
                 Instagram username
               </label>
@@ -147,7 +149,7 @@ const RegisterForm = (props) => {
                 value={username}
               ></input>
             </div>
-            <span className="md:text-2xl inline-block align-top italic text-greyish text-base ">
+            <span className="md:text-2xl inline-block align-top italic text-greyish text-xs ">
               (Required)
             </span>
           </div>
@@ -190,7 +192,7 @@ const RegisterForm = (props) => {
                 </div>
               </div>
             </div>
-            <span className="md:text-2xl inline-block align-top italic text-greyish text-base ">
+            <span className="md:text-2xl inline-block align-top italic text-greyish text-xs">
               (Required)
             </span>
           </div>
