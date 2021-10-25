@@ -110,7 +110,7 @@ const RegisterForm = (props) => {
           const data = response.data;
           getDataBlob(data);
         })
-        .catch(function (error) {
+        .catch((error) => {
           if (axios.isCancel(error)) {
             setLoading(false);
           } else {
@@ -118,6 +118,7 @@ const RegisterForm = (props) => {
             setProfileFail(true);
           }
         });
+
       return;
     }
     // show errors
@@ -150,7 +151,10 @@ const RegisterForm = (props) => {
               (Required)
             </span>
           </div>
-          <p ref={usernameNoteRef} className="text-sm md:text-base mt-1 md:pl-7 text-greyish ">
+          <p
+            ref={usernameNoteRef}
+            className="text-sm md:text-base mt-1 md:pl-7 text-greyish "
+          >
             Begin without '@' symbol
           </p>
           <div className="mt-4 md:pl-7">

@@ -69,18 +69,18 @@ const InstagramProfile = ({ profileInfo }) => {
   //toggle chat options for chat
   if (!toChat) {
     renderedButtons = (
-      <div>
+      <div className="md:max-w-screen-sm md:mx-auto">
         <Button goToChat={() => setToChat(true)} value="Continue to chat" />
         <Button
           cancel={() => history.push("/")}
           value="Change username"
-          classValues="bg-70 border border-solid border-greyish text-white px-5 py-2 rounded-md mt-5 mb-2.5 hover:bg-81 hover:text-f8 "
+          classValues="bg-70 border border-solid border-greyish text-white px-5 py-2 rounded-md mt-5 md:mt-1 mb-2.5 hover:bg-81 hover:text-f8 "
         />
       </div>
     );
   } else {
     renderedButtons = (
-      <div onClick={() => setToChat(false)}>
+      <div onClick={() => setToChat(false)} className="md:max-w-screen-sm md:mx-auto">
         <div className="z-20 relative">
           <Button
             continueToChat={(value) => continueToChatHandler(value)}
@@ -101,26 +101,28 @@ const InstagramProfile = ({ profileInfo }) => {
     // get profile Information via props
     const { username, name, profilePic } = profileInfo;
     renderedContent = (
-      <>
-        <figure className="w-2/5 my-12 mx-auto">
+      <div className="md:max-w-screen-sm md:mx-auto">
+        <figure className="w-2/5 md:w-4/12 my-12 mx-auto">
           <img src={profilePic} alt="myphoto" className="w-full" />
           <figcaption className="max-w-full overflow-auto text-base mt-2.5">
             {username}
           </figcaption>
         </figure>
-        <h1 className="text-2xl m-6 font-bold max-w-full overflow-auto">
+        <h1 className="text-2xl m-6  md:mb-8 font-bold max-w-full overflow-auto">
           Welcome, {name}
         </h1>
-      </>
+      </div>
     );
   } else {
     renderedContent = (
-      <p className="text-xl my-12 font-bold max-w-full overflow-auto">
-        Ooops! Failed to fetch profile.
-        <br /> Check Username <br />
-        and <br />
-        Try again.
-      </p>
+      <div className="md:max-w-screen-sm md:mx-auto">
+        <p className="text-xl my-12 font-bold max-w-full overflow-auto">
+          Ooops! Failed to fetch profile.
+          <br /> Check Username <br />
+          and <br />
+          Try again.
+        </p>
+      </div>
     );
   }
 

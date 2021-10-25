@@ -14,15 +14,6 @@ module.exports = {
         "2e": "#2e2d2d",
         f8: "#f8f7f7",
       },
-      fontSize: {
-        // 85: "5.313rem",
-      },
-      lineHeight: {
-        // 75: "4.688rem",
-      },
-      letterSpacing: {
-        // 0.1: "0.1em",
-      },
       borderColor: {
         greyish: "#707070",
         borderHover: "#484f4f",

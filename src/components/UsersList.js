@@ -57,7 +57,7 @@ class UsersList extends Component {
     let renderedContent;
     if (loading) {
       renderedContent = (
-        <div className="w-full animate-pulse px-1.5 py-6  grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
+        <div className="w-full animate-pulse px-1.5 py-6  grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6  md:max-w-screen-md md:mx-auto">
           <div className="m-auto">
             <div className="rounded-full  bg-gray-200 h-12 w-12"></div>
             <div className="w-full h-4 bg-gray-200 rounded  my-1.5 "></div>
@@ -93,14 +93,16 @@ class UsersList extends Component {
     }
     if (!loading && users.length === 0) {
       renderedContent = (
-        <div className="w-11/12 mt-2 mx-auto text-black">No users found!</div>
+        <div className="w-11/12 mt-2 mx-auto md:max-w-screen-sm  text-black">
+          No users found!
+        </div>
       );
     }
     if (!loading && users.length > 0) {
       renderedContent = (
-        <div className="text-center">
+        <div className="text-center md:max-w-screen-md md:mx-auto md:px-12">
           {this.state.showNote && (
-            <div className="w-11/12 mt-2 mx-auto text-black text-xs bg-blue-100  ">
+            <div className="w-11/12 mt-2 mx-auto text-black text-xs  bg-blue-100 md:text-base ">
               Click 'Chat' to copy username and visit profile.{" "}
               <span
                 onClick={() => this.setState({ showNote: false })}
@@ -110,14 +112,14 @@ class UsersList extends Component {
               </span>
             </div>
           )}
-          <div className="w-full px-1.5 py-6 text-sm grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
+          <div className="w-full px-1.5 py-6 text-sm md:text-base grid  grid-cols-3 items-center justify-center gap-x-1 gap-y-6">
             {usersSlice.map((user) => (
               <div key={user.username}>
-                <div>
+                <div className=" w-4/5 md:w-1/2 m-auto">
                   <img
                     src={user.photo}
                     alt={user.username}
-                    className="rounded-full"
+                    className="rounded-full w-full"
                   />
                 </div>
                 <h2 className="w-full my-1.5 overflow-ellipsis overflow-hidden  text-black">
