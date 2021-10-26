@@ -8,7 +8,12 @@ const LandingPage = (props) => {
   const toUsernameForm = () => {
     props.history.push("/register");
   };
-
+  const continueToChatHandler = async (value) => {
+    //go to girls/boys list
+    props.history.push(
+      `/users/${value === "Chat with girls" ? "female" : "male"}`
+    );
+  };
   return (
     <div className="w-full">
       <header className="w-full p-2.5  text-center bg-greyish  border-b border-solid border-greyish   ">
@@ -30,8 +35,14 @@ const LandingPage = (props) => {
           Username will be listed for chat
         </p>
         <p className="  my-4 md:text-7xl md:md:self-start">OR</p>
-        <Button value="Chat with girls" />
-        <Button value="Chat with boys" />
+        <Button
+          continueToChat={(value) => continueToChatHandler(value)}
+          value="Chat with girls"
+        />
+        <Button
+          continueToChat={(value) => continueToChatHandler(value)}
+          value="Chat with boys"
+        />
       </div>
     </div>
   );
