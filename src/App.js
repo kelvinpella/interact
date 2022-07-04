@@ -7,7 +7,7 @@ import UsersList from "./components/UsersList";
 function App() {
   return (
     <Router>
-      <div className="w-screen text-xl h-screen relative font-Roboto bg-white flex flex-col justify-between  ">
+      <div className="w-full text-xl h-screen relative font-Roboto bg-white flex flex-col justify-between  ">
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/users/:id" component={UsersList} />
